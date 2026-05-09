@@ -16,7 +16,7 @@ description: "Tasks for Silver transforms feature"
 
 - [ ] T010 Implement orders + order_lines transforms in `pipelines/silver/silver_transform_orders.py`
 - [ ] T011 Implement inventory snapshot transform in `pipelines/silver/silver_transform_inventory.py`
-- [ ] T012 Implement fulfilment events transform in `pipelines/silver/silver_transform_fulfilment.py`
+- [ ] T012 Implement fulfilment events transform in `pipelines/silver/silver_transform_fulfillment.py`
 - [ ] T013 Ensure all outputs are idempotent per `dt` via `replaceWhere`
 
 ## Phase 3: User Story 2 - Enforce basic referential sanity (P2)

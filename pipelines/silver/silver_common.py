@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 
 from pyspark.sql import DataFrame, SparkSession
+from pyspark.sql import functions as F
 
 
 @dataclass(frozen=True)
@@ -36,7 +37,8 @@ def silver_table_path(silver_base_path: str, table_name: str) -> str:
 
 def read_bronze_table(spark: SparkSession, table_fqn: str, *, dt: str) -> DataFrame:
     # Bronze tables are registered in Unity Catalog as retail_lakehouse.bronze.*
-    return spark.table(table_fqn).where(f"dt = '{dt}'")
+    # Use Column API (not SQL string) — Spark Connect resolves this more reliably than .where("dt = ...").
+    return spark.table(table_fqn).filter(F.col("dt") == F.lit(dt))
 
 
 def write_delta_overwrite_dt(df: DataFrame, *, out_path: str, dt: str) -> None:

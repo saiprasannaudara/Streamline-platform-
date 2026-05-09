@@ -42,7 +42,8 @@ pipelines/silver/
 ├── silver_common.py
 ├── silver_transform_orders.py
 ├── silver_transform_inventory.py
-└── silver_transform_fulfilment.py
+├── silver_transform_fulfillment.py   # canonical (US spelling)
+└── silver_transform_fulfilment.py    # shim → re-exports fulfillment
 ```
 
 ## Run Parameters
